@@ -153,8 +153,9 @@ namespace ZKTecoFingerPrintScanner_Implementation.Helpers
                 BmpInfoHeader.biBitCount = m_nBitCount;
                 BmpInfoHeader.biCompression = 0;
                 BmpInfoHeader.biSizeImage = 0;
-                BmpInfoHeader.biXPelsPerMeter = 0;
-                BmpInfoHeader.biYPelsPerMeter = 0;
+                // Set to 300 DPI (convert to pixels per meter)
+                BmpInfoHeader.biXPelsPerMeter = (int)(300 * 39.3701); // Convert 300 DPI to pixels/meter
+                BmpInfoHeader.biYPelsPerMeter = (int)(300 * 39.3701);
                 BmpInfoHeader.biClrUsed = m_nColorTableEntries;
                 BmpInfoHeader.biClrImportant = m_nColorTableEntries;
 

@@ -1,4 +1,7 @@
-﻿namespace Dofe_Re_Entry.UserControls.DeviceController
+﻿using System.IO;
+using System.Windows.Forms;
+
+namespace Dofe_Re_Entry.UserControls.DeviceController
 {
     partial class FingerPrintControl
     {
@@ -40,6 +43,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFree = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+
             ((System.ComponentModel.ISupportInitialize)(this.picFPImg)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +143,7 @@
             this.btnVerify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerify.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnVerify.ForeColor = System.Drawing.Color.Black;
-            this.btnVerify.Location = new System.Drawing.Point(145, 188);
+            this.btnVerify.Location = new System.Drawing.Point(145, 157);
             this.btnVerify.Name = "btnVerify";
             this.btnVerify.Size = new System.Drawing.Size(138, 34);
             this.btnVerify.TabIndex = 775;
@@ -202,13 +207,30 @@
             this.btnFree.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFree.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnFree.ForeColor = System.Drawing.Color.Black;
-            this.btnFree.Location = new System.Drawing.Point(145, 228);
+            this.btnFree.Location = new System.Drawing.Point(145, 197);
             this.btnFree.Name = "btnFree";
             this.btnFree.Size = new System.Drawing.Size(138, 34);
             this.btnFree.TabIndex = 786;
             this.btnFree.Text = "Free Resources";
             this.btnFree.UseVisualStyleBackColor = false;
             this.btnFree.Click += new System.EventHandler(this.bnFree_Click);
+            //
+            // btnSave
+            // 
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Location = new System.Drawing.Point(145, 237);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(138, 34);
+            this.btnSave.TabIndex = 787;
+            this.btnSave.Text = "Save Fingerprint";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FingerPrintControl
             // 
@@ -216,6 +238,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblFingerPrintCount);
             this.Controls.Add(this.btnFree);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbIdx);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.groupBox1);
@@ -248,5 +271,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnFree;
         public System.Windows.Forms.ComboBox cmbIdx;
+        private System.Windows.Forms.Button btnSave;
     }
 }

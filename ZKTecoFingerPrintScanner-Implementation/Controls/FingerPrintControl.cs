@@ -590,8 +590,59 @@ namespace Dofe_Re_Entry.UserControls.DeviceController
             }
         }
 
-
-
         #endregion
+
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Bitmap Image|*.bmp";
+                saveDialog.Title = "Save Fingerprint";
+                saveDialog.DefaultExt = "bmp";
+                
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    SaveFingerprint(saveDialog.FileName);
+                }
+            }
+        }
+
+        public void SaveFingerprint(string filePath)
+        {
+            if (FPBuffer == null || mfpWidth == 0 || mfpHeight == 0)
+            {
+                DisplayMessage("No fingerprint image available to save", false);
+                return;
+            }
+
+            try
+            {
+                // Create directory if it doesn't exist
+                string directory = Path.GetDirectoryName(filePath);
+                if (!string.IsNullOrEmpty(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                // Save using uncompressed BMP format
+                MemoryStream ms = new MemoryStream();
+                BitmapFormat.GetBitmap(FPBuffer, mfpWidth, mfpHeight, ref ms);
+                
+                using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                {
+                    ms.Position = 0;
+                    ms.CopyTo(fs);
+                }
+                
+                ms.Dispose(); // Clean up the memory stream
+
+                DisplayMessage($"Fingerprint saved successfully to {filePath}", true);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage($"Error saving fingerprint: {ex.Message}", false);
+            }
+        }
     }
 }
